@@ -107,8 +107,8 @@ const albums = [
     accent: { main: "#38bdf8", dim: "#0284c7", glow: "rgba(56, 189, 248, 0.15)" },
     cover: "music/diverse/cover.jpg",
     tracks: [
-      { number: 1, title: "Track 01", file: "music/diverse/Metamorphosen__Metamorphosen__Un-Ano-Estimulante_01.mp3" },
-      { number: 2, title: "Track 02", file: "music/diverse/Metamorphosen__Metamorphosen__Un-Ano-Estimulante_01.mp3" }
+      { number: 1, title: "Track 01", file: "music/diverse/Metamorphosen__Un-Ano-Estimulante_01.mp3" },
+      { number: 2, title: "Track 02", file: "music/diverse/Metamorphosen__Un-Ano-Estimulante_02.mp3" }
     ]
   }
 ];
