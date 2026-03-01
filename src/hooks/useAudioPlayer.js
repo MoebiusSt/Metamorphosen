@@ -119,6 +119,28 @@ export default function useAudioPlayer(albums) {
     setPlayerState((prev) => ({ ...prev, currentTime: time }));
   }, [audio]);
 
+  // Called after a drag-drop reorder so the highlighted/active track follows
+  // the moved element instead of staying on the old array position.
+  const adjustIndexAfterReorder = useCallback((albumId, fromIndex, toIndex) => {
+    if (fromIndex === toIndex) return;
+    setPlayerState((prev) => {
+      if (prev.currentAlbumId !== albumId) return prev;
+      const ci = prev.currentTrackIndex;
+      let newIndex = ci;
+      if (ci === fromIndex) {
+        // The playing track itself was moved
+        newIndex = toIndex;
+      } else if (fromIndex < toIndex) {
+        // Moved down: items between (fromIndex+1)..toIndex shift up by 1
+        if (ci > fromIndex && ci <= toIndex) newIndex = ci - 1;
+      } else {
+        // Moved up: items between toIndex..(fromIndex-1) shift down by 1
+        if (ci >= toIndex && ci < fromIndex) newIndex = ci + 1;
+      }
+      return { ...prev, currentTrackIndex: newIndex };
+    });
+  }, []);
+
   // Event listeners
   useEffect(() => {
     const handleTimeUpdate = () => {
@@ -153,5 +175,6 @@ export default function useAudioPlayer(albums) {
     next,
     prev,
     seek,
+    adjustIndexAfterReorder,
   };
 }
