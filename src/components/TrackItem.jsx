@@ -49,13 +49,17 @@ export default function TrackItem({
     setEditing(false);
   }
 
+  function cancelEdit() {
+    setEditValue(track.title);
+    setEditing(false);
+  }
+
   function handleInputKeyDown(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
       commitEdit();
     } else if (e.key === 'Escape') {
-      setEditValue(track.title);
-      setEditing(false);
+      cancelEdit();
     }
   }
 
@@ -105,16 +109,31 @@ export default function TrackItem({
       </span>
       <span className="track-item__title">
         {editing ? (
-          <input
-            ref={inputRef}
-            className="track-item__title-input"
-            type="text"
-            value={editValue}
-            onChange={e => setEditValue(e.target.value)}
-            onKeyDown={handleInputKeyDown}
-            onBlur={commitEdit}
-            onClick={e => e.stopPropagation()}
-          />
+          <span className="track-item__edit-row">
+            <input
+              ref={inputRef}
+              className="track-item__title-input"
+              type="text"
+              value={editValue}
+              onChange={e => setEditValue(e.target.value)}
+              onKeyDown={handleInputKeyDown}
+              onClick={e => e.stopPropagation()}
+            />
+            <button
+              className="track-item__edit-btn track-item__edit-btn--confirm"
+              onMouseDown={e => e.preventDefault()}
+              onClick={e => { e.stopPropagation(); commitEdit(); }}
+              title="Bestätigen (Enter)"
+              aria-label="Bestätigen"
+            >✓</button>
+            <button
+              className="track-item__edit-btn track-item__edit-btn--cancel"
+              onMouseDown={e => e.preventDefault()}
+              onClick={e => { e.stopPropagation(); cancelEdit(); }}
+              title="Abbrechen (Esc)"
+              aria-label="Abbrechen"
+            >✕</button>
+          </span>
         ) : (
           <span
             className={isEditMode ? 'track-item__title-text track-item__title-text--editable' : 'track-item__title-text'}

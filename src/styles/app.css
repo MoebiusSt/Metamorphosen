@@ -613,8 +613,16 @@ img {
   color: var(--text-primary);
 }
 
-.track-item__title-input {
+.track-item__edit-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   width: 100%;
+}
+
+.track-item__title-input {
+  flex: 1;
+  min-width: 0;
   background: var(--bg-elevated);
   border: 1px solid var(--accent);
   border-radius: 4px;
@@ -625,6 +633,38 @@ img {
   padding: 1px 6px;
   outline: none;
   box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+.track-item__edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+  transition: background var(--transition), color var(--transition);
+}
+
+.track-item__edit-btn--confirm {
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+}
+
+.track-item__edit-btn--confirm:hover {
+  background: var(--accent-glow);
+}
+
+.track-item__edit-btn--cancel {
+  color: var(--text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.track-item__edit-btn--cancel:hover {
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.4);
+  background: rgba(248, 113, 113, 0.1);
 }
 
 /* --- Drag & Drop insertion line --- */
