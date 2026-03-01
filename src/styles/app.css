@@ -106,12 +106,20 @@ img {
   background-clip: text;
 }
 
+/* Header actions: "?" + shuffle toggle stacked vertically at top-right */
+.header__actions {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 2;
+}
+
 /* Toggle button: hidden on desktop, shown on mobile */
 .header__subtitle-toggle {
   display: none;
-  position: absolute;
-  top: 20px;
-  right: 16px;
   width: 32px;
   height: 32px;
   align-items: center;
@@ -125,13 +133,44 @@ img {
   line-height: 1;
   cursor: pointer;
   transition: color var(--transition), background var(--transition), border-color var(--transition);
-  z-index: 2;
 }
 
 .header__subtitle-toggle:hover {
   color: var(--text-primary);
   background: var(--bg-hover);
   border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Shuffle toggle */
+.header__shuffle-toggle {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color var(--transition), background var(--transition), border-color var(--transition);
+}
+
+.header__shuffle-toggle:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.header__shuffle-toggle--active {
+  color: var(--accent);
+  background: var(--accent-glow);
+  border-color: var(--accent-dim);
+}
+
+.header__shuffle-toggle--active:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent);
 }
 
 .header__subtitle-wrap {
@@ -872,6 +911,10 @@ img {
 
   .header__subtitle-toggle {
     display: flex;
+  }
+
+  .header__actions {
+    top: 8px;
   }
 
   .header__subtitle-wrap {
