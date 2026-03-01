@@ -24,7 +24,14 @@ function loadOverrides() {
 function applyOverrides(overrides) {
   return albumsData.map(album => {
     if (overrides[album.id]) {
-      return { ...album, tracks: overrides[album.id] };
+      // Always use file paths from albums.js (canonical source), matched by track number.
+      // This prevents stale LocalStorage paths (e.g. unencoded filenames) from breaking playback.
+      const fileByNumber = Object.fromEntries(album.tracks.map(t => [t.number, t.file]));
+      const tracks = overrides[album.id].map(t => ({
+        ...t,
+        file: fileByNumber[t.number] ?? t.file,
+      }));
+      return { ...album, tracks };
     }
     return album;
   });
