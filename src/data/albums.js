@@ -108,12 +108,8 @@ const albums = [
     accent: { main: "#38bdf8", dim: "#0284c7", glow: "rgba(56, 189, 248, 0.15)" },
     cover: "music/diverse/cover.jpg",
     tracks: [
-      { number: 1, title: "Track 01", file: "music/diverse/Metamorphosen__Aggregatzustaende_01.mp3" },
-      { number: 2, title: "Track 02", file: "music/diverse/Metamorphosen__Aggregatzustaende_02.mp3" },
-      { number: 3, title: "Track 03", file: "music/diverse/Metamorphosen__Aggregatzustaende_03.mp3" },
-      { number: 4, title: "Track 04", file: "music/diverse/Metamorphosen__Aggregatzustaende_04.mp3" },
-      { number: 5, title: "Track 05", file: "music/diverse/Metamorphosen__Aggregatzustaende_05.mp3" },
-      { number: 6, title: "Track 06", file: "music/diverse/Metamorphosen__Aggregatzustaende_06.mp3" },
+      { number: 1, title: "Track 01", file: "music/diverse/Metamorphosen__Un Año Estimulante_01.mp3" },
+      { number: 2, title: "Track 02", file: "music/diverse/Metamorphosen__Un Año Estimulante_02.mp3" },
     ]
   },
 ];
