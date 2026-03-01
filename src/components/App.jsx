@@ -8,6 +8,7 @@ import useAudioPlayer from '../hooks/useAudioPlayer.js';
 import usePlaylistData from '../hooks/usePlaylistData.js';
 import useEditMode from '../hooks/useEditMode.js';
 import useShuffleMode from '../hooks/useShuffleMode.js';
+import useLikes from '../hooks/useLikes.js';
 import { getPersistedUi, setPersistedUi } from '../utils/persistUi.js';
 
 export default function App() {
@@ -20,6 +21,8 @@ export default function App() {
     nextShuffled,
     prevShuffled,
   } = useShuffleMode();
+
+  const { toggleLike, isLiked, getCount } = useLikes();
 
   const [activeAlbumId, setActiveAlbumId] = useState(albums[0]?.id ?? null);
   const uiHydratedRef = useRef(false);
@@ -149,6 +152,9 @@ export default function App() {
           onTitleChange={updateTrackTitle}
           onReorderTracks={handleReorderTracks}
           onExport={exportAlbumsJs}
+          isLiked={isLiked}
+          getCount={getCount}
+          onToggleLike={toggleLike}
         />
       </main>
       <Player
