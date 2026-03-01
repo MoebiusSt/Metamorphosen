@@ -1,6 +1,4 @@
-import albums from '../data/albums.js';
-
-export default function GenreTabs({ activeAlbumId, onTabChange }) {
+export default function GenreTabs({ activeAlbumId, onTabChange, albums }) {
   return (
     <nav className="genre-tabs">
       <div className="genre-tabs__scroll">

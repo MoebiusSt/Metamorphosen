@@ -1,4 +1,3 @@
-import albums from '../data/albums.js';
 import Scrubber from './Scrubber.jsx';
 
 function formatTime(seconds) {
@@ -8,7 +7,7 @@ function formatTime(seconds) {
   return `${m}:${s.toString().padStart(2, '0')}`;
 }
 
-export default function Player({ playerState, onPause, onResume, onNext, onPrev, onSeek }) {
+export default function Player({ playerState, albums, onPause, onResume, onNext, onPrev, onSeek }) {
   const { currentAlbumId, currentTrackIndex, isPlaying, currentTime, duration } = playerState;
 
   const album = albums.find((a) => a.id === currentAlbumId);
