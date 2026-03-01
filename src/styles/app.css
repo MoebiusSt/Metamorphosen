@@ -106,12 +106,20 @@ img {
   background-clip: text;
 }
 
+/* Header actions: "?" + shuffle toggle stacked vertically at top-right */
+.header__actions {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 2;
+}
+
 /* Toggle button: hidden on desktop, shown on mobile */
 .header__subtitle-toggle {
   display: none;
-  position: absolute;
-  top: 20px;
-  right: 16px;
   width: 32px;
   height: 32px;
   align-items: center;
@@ -125,13 +133,44 @@ img {
   line-height: 1;
   cursor: pointer;
   transition: color var(--transition), background var(--transition), border-color var(--transition);
-  z-index: 2;
 }
 
 .header__subtitle-toggle:hover {
   color: var(--text-primary);
   background: var(--bg-hover);
   border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Shuffle toggle */
+.header__shuffle-toggle {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color var(--transition), background var(--transition), border-color var(--transition);
+}
+
+.header__shuffle-toggle:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.header__shuffle-toggle--active {
+  color: var(--accent);
+  background: var(--accent-glow);
+  border-color: var(--accent-dim);
+}
+
+.header__shuffle-toggle--active:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent);
 }
 
 .header__subtitle-wrap {
@@ -359,6 +398,47 @@ img {
 @keyframes eq-bounce {
   0% { transform: scaleY(0.3); }
   100% { transform: scaleY(1); }
+}
+
+/* --- Like Button --- */
+.track-item__like {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  color: var(--text-muted, #7d7d7d);
+  flex-shrink: 0;
+  transition: color var(--transition), transform 0.15s ease;
+  cursor: pointer;
+}
+
+.track-item__like:hover {
+  color: var(--text-secondary);
+}
+
+.track-item__like--active {
+  color: var(--accent);
+}
+
+.track-item__like--active:hover {
+  color: var(--accent);
+  opacity: 0.8;
+}
+
+.track-item__like-icon {
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.track-item__like:active .track-item__like-icon {
+  transform: scale(1.25);
+}
+
+.track-item__like-count {
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  min-width: 1ch;
 }
 
 /* Hover: show play icon for non-active tracks */
@@ -872,6 +952,10 @@ img {
 
   .header__subtitle-toggle {
     display: flex;
+  }
+
+  .header__actions {
+    top: 8px;
   }
 
   .header__subtitle-wrap {

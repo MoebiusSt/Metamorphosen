@@ -21,7 +21,7 @@ function getInitialPlayerState(albums) {
   }
 }
 
-export default function useAudioPlayer(albums) {
+export default function useAudioPlayer(albums, { onEndedOverride } = {}) {
   const audioRef = useRef(null);
   const albumsRef = useRef(albums);
   albumsRef.current = albums; // always current, no stale closure
@@ -185,8 +185,11 @@ export default function useAudioPlayer(albums) {
     };
 
     const handleEnded = () => {
-      // Auto-next
-      next();
+      if (onEndedOverride) {
+        onEndedOverride();
+      } else {
+        next();
+      }
     };
 
     audio.addEventListener('timeupdate', handleTimeUpdate);
@@ -198,7 +201,7 @@ export default function useAudioPlayer(albums) {
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
       audio.removeEventListener('ended', handleEnded);
     };
-  }, [audio, next]);
+  }, [audio, next, onEndedOverride]);
 
   useEffect(() => {
     setPersistedUi({
