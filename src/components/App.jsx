@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './Header.jsx';
 import GenreTabs from './GenreTabs.jsx';
 import AlbumView from './AlbumView.jsx';
@@ -9,6 +9,16 @@ import albums from '../data/albums.js';
 export default function App() {
   const [activeAlbumId, setActiveAlbumId] = useState(albums[0].id);
   const { playerState, play, pause, resume, next, prev, seek } = useAudioPlayer();
+
+  useEffect(() => {
+    const album = albums.find((a) => a.id === activeAlbumId);
+    if (album?.accent) {
+      const root = document.documentElement;
+      root.style.setProperty('--accent', album.accent.main);
+      root.style.setProperty('--accent-dim', album.accent.dim);
+      root.style.setProperty('--accent-glow', album.accent.glow);
+    }
+  }, [activeAlbumId]);
 
   return (
     <div className="app">
