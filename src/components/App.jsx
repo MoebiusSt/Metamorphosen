@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Header from './Header.jsx';
 import GenreTabs from './GenreTabs.jsx';
 import AlbumView from './AlbumView.jsx';
@@ -7,12 +7,29 @@ import EditPasswordModal from './EditPasswordModal.jsx';
 import useAudioPlayer from '../hooks/useAudioPlayer.js';
 import usePlaylistData from '../hooks/usePlaylistData.js';
 import useEditMode from '../hooks/useEditMode.js';
+import { getPersistedUi, setPersistedUi } from '../utils/persistUi.js';
 
 export default function App() {
   const { albums, updateTrackTitle, reorderTracks, exportAlbumsJs } = usePlaylistData();
   const { isEditMode, showPasswordModal, toggleEditMode, authenticate, closePasswordModal } = useEditMode();
 
-  const [activeAlbumId, setActiveAlbumId] = useState(albums[0].id);
+  const [activeAlbumId, setActiveAlbumId] = useState(albums[0]?.id ?? null);
+  const uiHydratedRef = useRef(false);
+
+  useEffect(() => {
+    if (!albums.length || uiHydratedRef.current) return;
+    uiHydratedRef.current = true;
+    const { activeAlbumId: stored } = getPersistedUi();
+    if (stored && albums.some((a) => a.id === stored)) {
+      setActiveAlbumId(stored);
+    } else {
+      setActiveAlbumId(albums[0].id);
+    }
+  }, [albums]);
+
+  useEffect(() => {
+    if (activeAlbumId) setPersistedUi({ activeAlbumId });
+  }, [activeAlbumId]);
   const { playerState, play, pause, resume, next, prev, seek, adjustIndexAfterReorder } = useAudioPlayer(albums);
 
   function handleReorderTracks(albumId, fromIndex, toIndex) {

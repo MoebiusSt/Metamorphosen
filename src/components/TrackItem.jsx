@@ -104,7 +104,7 @@ export default function TrackItem({
         ) : !isEditMode && isActive ? (
           <span className="track-item__play-icon">&#9654;</span>
         ) : (
-          track.number
+          index + 1
         )}
       </span>
       <span className="track-item__title">
@@ -135,12 +135,19 @@ export default function TrackItem({
             >✕</button>
           </span>
         ) : (
-          <span
-            className={isEditMode ? 'track-item__title-text track-item__title-text--editable' : 'track-item__title-text'}
-            onClick={handleTitleClick}
-          >
-            {track.title}
-          </span>
+          <>
+            <span
+              className={isEditMode ? 'track-item__title-text track-item__title-text--editable' : 'track-item__title-text'}
+              onClick={handleTitleClick}
+            >
+              {track.title}
+            </span>
+            {isEditMode && (
+              <span className="track-item__source-number" aria-label={`Source track ${track.number}`}>
+                {track.number}
+              </span>
+            )}
+          </>
         )}
       </span>
       <span className="track-item__duration">{track.duration}</span>

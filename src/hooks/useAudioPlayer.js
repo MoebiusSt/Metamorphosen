@@ -1,17 +1,35 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
+import { getPersistedUi, setPersistedUi } from '../utils/persistUi.js';
+
+const defaultPlayerState = {
+  currentAlbumId: null,
+  currentTrackIndex: 0,
+  isPlaying: false,
+  currentTime: 0,
+  duration: 0,
+};
+
+function getInitialPlayerState(albums) {
+  try {
+    const { currentAlbumId: storedAlbumId, currentTrackIndex: storedIndex } = getPersistedUi();
+    const album = albums.find((a) => a.id === storedAlbumId);
+    if (!album) return defaultPlayerState;
+    const index = Math.max(0, Math.min(Number(storedIndex) | 0, album.tracks.length - 1));
+    return { ...defaultPlayerState, currentAlbumId: album.id, currentTrackIndex: index };
+  } catch (_) {
+    return defaultPlayerState;
+  }
+}
 
 export default function useAudioPlayer(albums) {
   const audioRef = useRef(null);
   const albumsRef = useRef(albums);
   albumsRef.current = albums; // always current, no stale closure
+  const playerStateRef = useRef(null);
+  const loadedForRef = useRef({ albumId: null, trackIndex: null });
 
-  const [playerState, setPlayerState] = useState({
-    currentAlbumId: null,
-    currentTrackIndex: 0,
-    isPlaying: false,
-    currentTime: 0,
-    duration: 0,
-  });
+  const [playerState, setPlayerState] = useState(() => getInitialPlayerState(albums));
+  playerStateRef.current = playerState;
 
   // Initialize Audio object once
   if (!audioRef.current) {
@@ -33,6 +51,7 @@ export default function useAudioPlayer(albums) {
     audio.src = `${base}${track.file}`;
     audio.load();
     audio.play().catch(() => {});
+    loadedForRef.current = { albumId, trackIndex };
 
     setPlayerState((prev) => ({
       ...prev,
@@ -50,9 +69,19 @@ export default function useAudioPlayer(albums) {
   }, [audio]);
 
   const resume = useCallback(() => {
+    const { currentAlbumId, currentTrackIndex } = playerStateRef.current;
+    const { albumId: loadedAlbum, trackIndex: loadedIndex } = loadedForRef.current;
+    const needsLoad =
+      currentAlbumId != null &&
+      currentTrackIndex != null &&
+      (loadedAlbum !== currentAlbumId || loadedIndex !== currentTrackIndex);
+    if (needsLoad) {
+      play(currentAlbumId, currentTrackIndex);
+      return;
+    }
     audio.play().catch(() => {});
     setPlayerState((prev) => ({ ...prev, isPlaying: true }));
-  }, [audio]);
+  }, [audio, play]);
 
   const next = useCallback(() => {
     setPlayerState((prev) => {
@@ -71,6 +100,7 @@ export default function useAudioPlayer(albums) {
       audio.src = `${base}${track.file}`;
       audio.load();
       audio.play().catch(() => {});
+      loadedForRef.current = { albumId: prev.currentAlbumId, trackIndex: nextIndex };
 
       return {
         ...prev,
@@ -105,6 +135,7 @@ export default function useAudioPlayer(albums) {
       audio.src = `${base}${track.file}`;
       audio.load();
       audio.play().catch(() => {});
+      loadedForRef.current = { albumId: prevState.currentAlbumId, trackIndex: prevIndex };
 
       return {
         ...prevState,
@@ -168,6 +199,13 @@ export default function useAudioPlayer(albums) {
       audio.removeEventListener('ended', handleEnded);
     };
   }, [audio, next]);
+
+  useEffect(() => {
+    setPersistedUi({
+      currentAlbumId: playerState.currentAlbumId,
+      currentTrackIndex: playerState.currentTrackIndex,
+    });
+  }, [playerState.currentAlbumId, playerState.currentTrackIndex]);
 
   return {
     playerState,
