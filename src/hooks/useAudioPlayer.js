@@ -1,7 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
-import albums from '../data/albums.js';
 
-export default function useAudioPlayer() {
+export default function useAudioPlayer(albums) {
   const audioRef = useRef(null);
 
   const [playerState, setPlayerState] = useState({

@@ -5,7 +5,17 @@ const STORAGE_KEY = 'metamorphosen_playlist';
 
 function loadOverrides() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    // Drop overrides where track count no longer matches the base data
+    // (happens when tracks are added/removed in albums.js after a deploy)
+    const validated = {};
+    for (const album of albumsData) {
+      const override = stored[album.id];
+      if (override && override.length === album.tracks.length) {
+        validated[album.id] = override;
+      }
+    }
+    return validated;
   } catch {
     return {};
   }
