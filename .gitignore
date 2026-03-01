@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local agent/IDE documentation (do not commit)
+AGENTS.md
