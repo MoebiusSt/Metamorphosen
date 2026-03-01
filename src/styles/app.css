@@ -496,8 +496,10 @@ img {
   }
 
   .genre-tabs__scroll {
-    justify-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
     padding: 8px 12px;
+    overflow-x: visible;
   }
 
   .genre-tabs__tab {
