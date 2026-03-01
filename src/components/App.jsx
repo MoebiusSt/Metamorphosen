@@ -13,7 +13,7 @@ export default function App() {
   const { isEditMode, showPasswordModal, toggleEditMode, authenticate, closePasswordModal } = useEditMode();
 
   const [activeAlbumId, setActiveAlbumId] = useState(albums[0].id);
-  const { playerState, play, pause, resume, next, prev, seek } = useAudioPlayer();
+  const { playerState, play, pause, resume, next, prev, seek } = useAudioPlayer(albums);
 
   const activeAlbum = albums.find((a) => a.id === activeAlbumId);
 
