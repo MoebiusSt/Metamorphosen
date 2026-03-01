@@ -10,7 +10,7 @@ export default function GenreTabs({ activeAlbumId, onTabChange }) {
             className={`genre-tabs__tab ${activeAlbumId === album.id ? 'genre-tabs__tab--active' : ''}`}
             onClick={() => onTabChange(album.id)}
           >
-            {album.title}
+            {album.genre}
           </button>
         ))}
       </div>

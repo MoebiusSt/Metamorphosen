@@ -1,75 +1,99 @@
 /**
  * Album-Konfiguration – Zentrale Datei für alle Alben und Tracks.
  *
- * So passt du sie an:
- * 1. Lege deine MP3-Dateien in public/music/{genre-id}/ ab
- * 2. Lege ein quadratisches Cover-Bild als cover.jpg in denselben Ordner
- * 3. Trage die Dateinamen und Track-Infos hier ein
+ * Dateinamen-Schema: Metamorphosen__{Albumname}_{Tracknummer}.mp3
+ * Cover: cover.jpg in jedem Genre-Ordner
  *
- * Dateinamen-Konvention: 01-trackname.mp3, 02-trackname.mp3, ...
- * Cover: cover.jpg (oder .png)
+ * Die duration-Werte werden zur Laufzeit aus den Audio-Metadaten gelesen.
  */
 
 const albums = [
   {
     id: "hiphop",
-    title: "Hiphop",
+    title: "Vielleicht ein bisschen drauf",
+    genre: "Hiphop",
     cover: "music/hiphop/cover.jpg",
     tracks: [
-      { number: 1, title: "Betonpoesie", file: "music/hiphop/01-betonpoesie.mp3", duration: "3:42" },
-      { number: 2, title: "Nachtschicht", file: "music/hiphop/02-nachtschicht.mp3", duration: "4:15" },
-      { number: 3, title: "Kreuzung", file: "music/hiphop/03-kreuzung.mp3", duration: "3:58" },
-      { number: 4, title: "Spiegelbild", file: "music/hiphop/04-spiegelbild.mp3", duration: "4:33" },
-      { number: 5, title: "Frequenzwechsel", file: "music/hiphop/05-frequenzwechsel.mp3", duration: "3:21" },
+      { number: 1, title: "Track 01", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_01.mp3" },
+      { number: 2, title: "Track 02", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_02.mp3" },
+      { number: 3, title: "Track 03", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_03.mp3" },
+      { number: 4, title: "Track 04", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_04.mp3" },
+      { number: 5, title: "Track 05", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_05.mp3" },
+      { number: 6, title: "Track 06", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_06.mp3" },
+      { number: 7, title: "Track 07", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_07.mp3" },
+      { number: 8, title: "Track 08", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_08.mp3" },
+      { number: 9, title: "Track 09", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_09.mp3" },
+      { number: 10, title: "Track 10", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_10.mp3" },
+      { number: 11, title: "Track 11", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_11.mp3" },
+      { number: 12, title: "Track 12", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_12.mp3" },
+      { number: 13, title: "Track 13", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_13.mp3" },
+      { number: 14, title: "Track 14", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_14.mp3" },
+      { number: 15, title: "Track 15", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_15.mp3" },
     ]
   },
   {
     id: "indietronic",
-    title: "Indietronic",
+    title: "Transfusion de concentration",
+    genre: "Indietronic",
     cover: "music/indietronic/cover.jpg",
     tracks: [
-      { number: 1, title: "Signalrauschen", file: "music/indietronic/01-signalrauschen.mp3", duration: "4:08" },
-      { number: 2, title: "Lichtmaschine", file: "music/indietronic/02-lichtmaschine.mp3", duration: "3:45" },
-      { number: 3, title: "Parallelen", file: "music/indietronic/03-parallelen.mp3", duration: "5:12" },
-      { number: 4, title: "Schwebezustand", file: "music/indietronic/04-schwebezustand.mp3", duration: "4:27" },
-      { number: 5, title: "Pulsschlag", file: "music/indietronic/05-pulsschlag.mp3", duration: "3:55" },
-      { number: 6, title: "Wellenform", file: "music/indietronic/06-wellenform.mp3", duration: "4:40" },
+      { number: 1, title: "Track 01", file: "music/indietronic/Metamorphosen__Transfusion-de-concentration_01.mp3" },
+      { number: 2, title: "Track 02", file: "music/indietronic/Metamorphosen__Transfusion-de-concentration_02.mp3" },
+      { number: 3, title: "Track 03", file: "music/indietronic/Metamorphosen__Transfusion-de-concentration_03.mp3" },
+      { number: 4, title: "Track 04", file: "music/indietronic/Metamorphosen__Transfusion-de-concentration_04.mp3" },
+      { number: 5, title: "Track 05", file: "music/indietronic/Metamorphosen__Transfusion-de-concentration_05.mp3" },
+      { number: 6, title: "Track 06", file: "music/indietronic/Metamorphosen__Transfusion-de-concentration_06.mp3" },
+      { number: 7, title: "Track 07", file: "music/indietronic/Metamorphosen__Transfusion-de-concentration_07.mp3" },
+      { number: 8, title: "Track 08", file: "music/indietronic/Metamorphosen__Transfusion-de-concentration_08.mp3" },
+      { number: 9, title: "Track 09", file: "music/indietronic/Metamorphosen__Transfusion-de-concentration_09.mp3" },
     ]
   },
   {
     id: "post-punk",
-    title: "Post-Punk",
+    title: "Un Año Estimulante",
+    genre: "Post-Punk",
     cover: "music/post-punk/cover.jpg",
     tracks: [
-      { number: 1, title: "Grauzone", file: "music/post-punk/01-grauzone.mp3", duration: "3:18" },
-      { number: 2, title: "Betonwüste", file: "music/post-punk/02-betonwueste.mp3", duration: "4:02" },
-      { number: 3, title: "Schattenwurf", file: "music/post-punk/03-schattenwurf.mp3", duration: "3:47" },
-      { number: 4, title: "Zerrspiegel", file: "music/post-punk/04-zerrspiegel.mp3", duration: "5:01" },
-      { number: 5, title: "Kaltfront", file: "music/post-punk/05-kaltfront.mp3", duration: "3:33" },
+      { number: 1, title: "Track 01", file: "music/post-punk/Metamorphosen__Un-Año-Estimulante_01.mp3" },
+      { number: 2, title: "Track 02", file: "music/post-punk/Metamorphosen__Un-Año-Estimulante_02.mp3" },
+      { number: 3, title: "Track 03", file: "music/post-punk/Metamorphosen__Un-Año-Estimulante_03.mp3" },
+      { number: 4, title: "Track 04", file: "music/post-punk/Metamorphosen__Un-Año-Estimulante_04.mp3" },
+      { number: 5, title: "Track 05", file: "music/post-punk/Metamorphosen__Un-Año-Estimulante_05.mp3" },
+      { number: 6, title: "Track 06", file: "music/post-punk/Metamorphosen__Un-Año-Estimulante_06.mp3" },
+      { number: 7, title: "Track 07", file: "music/post-punk/Metamorphosen__Un-Año-Estimulante_07.mp3" },
+      { number: 8, title: "Track 08", file: "music/post-punk/Metamorphosen__Un-Año-Estimulante_08.mp3" },
     ]
   },
   {
     id: "hamburger-schule",
-    title: "Hamburger Schule",
+    title: "Im Kreissaal der Gedanken",
+    genre: "Hamburger Schule",
     cover: "music/hamburger-schule/cover.jpg",
     tracks: [
-      { number: 1, title: "Diskursverschiebung", file: "music/hamburger-schule/01-diskursverschiebung.mp3", duration: "4:22" },
-      { number: 2, title: "Seminarraum", file: "music/hamburger-schule/02-seminarraum.mp3", duration: "3:56" },
-      { number: 3, title: "Zitatgewitter", file: "music/hamburger-schule/03-zitatgewitter.mp3", duration: "4:11" },
-      { number: 4, title: "Referenzrahmen", file: "music/hamburger-schule/04-referenzrahmen.mp3", duration: "3:44" },
+      { number: 1, title: "Track 01", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_01.mp3" },
+      { number: 2, title: "Track 02", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_02.mp3" },
+      { number: 3, title: "Track 03", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_03.mp3" },
+      { number: 4, title: "Track 04", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_04.mp3" },
+      { number: 5, title: "Track 05", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_05.mp3" },
+      { number: 6, title: "Track 06", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_06.mp3" },
+      { number: 7, title: "Track 07", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_07.mp3" },
+      { number: 8, title: "Track 08", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_08.mp3" },
+      { number: 9, title: "Track 09", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_09.mp3" },
+      { number: 10, title: "Track 10", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_10.mp3" },
+      { number: 11, title: "Track 11", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_11.mp3" },
     ]
   },
   {
     id: "chanson",
-    title: "Chanson",
+    title: "The grand focus",
+    genre: "Chanson",
     cover: "music/chanson/cover.jpg",
     tracks: [
-      { number: 1, title: "Flussaufwärts", file: "music/chanson/01-flussaufwaerts.mp3", duration: "4:35" },
-      { number: 2, title: "Regenmantel", file: "music/chanson/02-regenmantel.mp3", duration: "3:28" },
-      { number: 3, title: "Abendstunde", file: "music/chanson/03-abendstunde.mp3", duration: "5:02" },
-      { number: 4, title: "Schattenspiel", file: "music/chanson/04-schattenspiel.mp3", duration: "4:18" },
-      { number: 5, title: "Zwischentöne", file: "music/chanson/05-zwischentoene.mp3", duration: "3:50" },
-      { number: 6, title: "Dämmerung", file: "music/chanson/06-daemmerung.mp3", duration: "4:45" },
+      { number: 1, title: "Track 01", file: "music/chanson/Metamorphosen__The-grand-focus_01.mp3" },
+      { number: 2, title: "Track 02", file: "music/chanson/Metamorphosen__The-grand-focus_02.mp3" },
+      { number: 3, title: "Track 03", file: "music/chanson/Metamorphosen__The-grand-focus_03.mp3" },
+      { number: 4, title: "Track 04", file: "music/chanson/Metamorphosen__The-grand-focus_04.mp3" },
+      { number: 5, title: "Track 05", file: "music/chanson/Metamorphosen__The-grand-focus_05.mp3" },
     ]
   },
 ];
