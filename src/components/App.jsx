@@ -13,7 +13,12 @@ export default function App() {
   const { isEditMode, showPasswordModal, toggleEditMode, authenticate, closePasswordModal } = useEditMode();
 
   const [activeAlbumId, setActiveAlbumId] = useState(albums[0].id);
-  const { playerState, play, pause, resume, next, prev, seek } = useAudioPlayer(albums);
+  const { playerState, play, pause, resume, next, prev, seek, adjustIndexAfterReorder } = useAudioPlayer(albums);
+
+  function handleReorderTracks(albumId, fromIndex, toIndex) {
+    reorderTracks(albumId, fromIndex, toIndex);
+    adjustIndexAfterReorder(albumId, fromIndex, toIndex);
+  }
 
   const activeAlbum = albums.find((a) => a.id === activeAlbumId);
 
@@ -38,7 +43,7 @@ export default function App() {
           isEditMode={isEditMode}
           onToggleEditMode={toggleEditMode}
           onTitleChange={updateTrackTitle}
-          onReorderTracks={reorderTracks}
+          onReorderTracks={handleReorderTracks}
           onExport={exportAlbumsJs}
         />
       </main>
