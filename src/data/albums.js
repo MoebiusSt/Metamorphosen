@@ -47,7 +47,6 @@ const albums = [
       { number: 6, title: "Track 06", file: "music/indietronic/Metamorphosen__Transfusion-de-concentration_06.mp3" },
       { number: 7, title: "Track 07", file: "music/indietronic/Metamorphosen__Transfusion-de-concentration_07.mp3" },
       { number: 8, title: "Track 08", file: "music/indietronic/Metamorphosen__Transfusion-de-concentration_08.mp3" },
-      { number: 9, title: "Track 09", file: "music/indietronic/Metamorphosen__Transfusion-de-concentration_09.mp3" }
     ]
   },
   {
@@ -108,8 +107,8 @@ const albums = [
     accent: { main: "#38bdf8", dim: "#0284c7", glow: "rgba(56, 189, 248, 0.15)" },
     cover: "music/diverse/cover.jpg",
     tracks: [
-      { number: 1, title: "Track 01", file: "music/diverse/Metamorphosen__Un Año Estimulante_01.mp3" },
-      { number: 2, title: "Track 02", file: "music/diverse/Metamorphosen__Un Año Estimulante_02.mp3" }
+      { number: 1, title: "Track 01", file: "music/diverse/Metamorphosen__Un%20A%C3%B1o%20Estimulante_01.mp3" },
+      { number: 2, title: "Track 02", file: "music/diverse/Metamorphosen__Un%20A%C3%B1o%20Estimulante_02.mp3" }
     ]
   }
 ];
