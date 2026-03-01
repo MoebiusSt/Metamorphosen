@@ -95,10 +95,10 @@ const albums = [
     cover: "music/chanson/cover.jpg",
     tracks: [
       { number: 1, title: "Track 01", file: "music/chanson/Metamorphosen__The-grand-focus_01.mp3" },
-      { number: 2, title: "Track 02", file: "music/chanson/Metamorphosen__The-grand-focus_02.mp3" },
+      { number: 2, title: "Track 02", file: "music/chanson/Metamorphosen__The-grand-focus_05.mp3" },
       { number: 3, title: "Track 03", file: "music/chanson/Metamorphosen__The-grand-focus_03.mp3" },
       { number: 4, title: "Track 04", file: "music/chanson/Metamorphosen__The-grand-focus_04.mp3" },
-      { number: 5, title: "Track 05", file: "music/chanson/Metamorphosen__The-grand-focus_05.mp3" },
+      { number: 5, title: "Track 05", file: "music/chanson/Metamorphosen__The-grand-focus_02.mp3" },
     ]
   },
   {
