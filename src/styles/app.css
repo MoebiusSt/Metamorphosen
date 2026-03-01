@@ -90,7 +90,7 @@ img {
 /* --- Header --- */
 .header {
   position: relative;
-  padding: 28px 20px 12px;
+  padding: 8px 20px 12px;
   text-align: center;
 }
 
@@ -151,6 +151,7 @@ img {
   margin: 8px auto 0;
   line-height: 1.5;
   letter-spacing: 0.013em;
+  text-align: left;
 }
 
 /* --- Genre Tabs --- */
