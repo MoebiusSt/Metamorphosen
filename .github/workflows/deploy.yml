@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-      - 'claude/album-player-setup-WUqe2'
-      - 'claude/fix-genre-buttons-mobile-NUEvg'
   workflow_dispatch:
 
 permissions:
