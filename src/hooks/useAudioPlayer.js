@@ -2,6 +2,8 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 
 export default function useAudioPlayer(albums) {
   const audioRef = useRef(null);
+  const albumsRef = useRef(albums);
+  albumsRef.current = albums; // always current, no stale closure
 
   const [playerState, setPlayerState] = useState({
     currentAlbumId: null,
@@ -19,7 +21,7 @@ export default function useAudioPlayer(albums) {
   const audio = audioRef.current;
 
   const getAlbum = useCallback((albumId) => {
-    return albums.find((a) => a.id === albumId);
+    return albumsRef.current.find((a) => a.id === albumId);
   }, []);
 
   const play = useCallback((albumId, trackIndex) => {
