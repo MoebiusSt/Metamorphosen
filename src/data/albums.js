@@ -24,9 +24,8 @@ const albums = [
       { number: 14, title: "Bisschen rauf, bisschen runter", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_14.mp3" },
       { number: 8, title: "Verlohrn (Posse Cut)", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_08.mp3" },
       { number: 9, title: "Reich mir Hand (Dub Mix)", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_09.mp3" },
-      { number: 11, title: "Im Pulse", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_11.mp3" },
       { number: 13, title: "Corazon, Amigo (Fest. Gaststars)", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_13.mp3" },
-      { number: 10, title: "Stepper Acid", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_10.mp3" }
+      { number: 11, title: "Und tāglich gib uns... (Bonustrack)", file: "music/hiphop/Metamorphosen__Vielleicht-ein-bisschen-drauf_11.mp3" }
     ]
   },
   {

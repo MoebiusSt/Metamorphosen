@@ -3,6 +3,23 @@
    Dark Theme, Spotify-inspired
    ======================================== */
 
+/* --- Registered CSS Custom Properties (enables color transitions) --- */
+@property --accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #2dd4a8;
+}
+@property --accent-dim {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #0d9373;
+}
+@property --accent-glow {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(45, 212, 168, 0.15);
+}
+
 /* --- CSS Custom Properties --- */
 :root {
   --bg-base: #0a0a0a;
@@ -90,7 +107,7 @@ img {
 /* --- Header --- */
 .header {
   position: relative;
-  padding: 28px 20px 12px;
+  padding: 8px 20px 12px;
   text-align: center;
 }
 
@@ -106,32 +123,86 @@ img {
   background-clip: text;
 }
 
+/* Header actions: left side (shuffle) */
+.header__actions-left {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 2;
+}
+
+/* Header actions: right side ("?" toggle) */
+.header__actions {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 2;
+}
+
 /* Toggle button: hidden on desktop, shown on mobile */
 .header__subtitle-toggle {
   display: none;
-  position: absolute;
-  top: 20px;
-  right: 16px;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: var(--bg-elevated);
   color: var(--text-secondary);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 600;
   line-height: 1;
   cursor: pointer;
   transition: color var(--transition), background var(--transition), border-color var(--transition);
-  z-index: 2;
 }
 
 .header__subtitle-toggle:hover {
   color: var(--text-primary);
   background: var(--bg-hover);
   border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Shuffle toggle */
+.header__shuffle-toggle {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.header__shuffle-toggle:hover {
+  color: var(--text-secondary);
+  background: var(--bg-hover);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.header__shuffle-toggle--active {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  border-color: var(--accent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 45%, transparent),
+              0 0 18px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.header__shuffle-toggle--active:hover {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 55%, transparent),
+              0 0 24px color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
 .header__subtitle-wrap {
@@ -151,6 +222,7 @@ img {
   margin: 8px auto 0;
   line-height: 1.5;
   letter-spacing: 0.013em;
+  text-align: left;
 }
 
 /* --- Genre Tabs --- */
@@ -358,6 +430,67 @@ img {
 @keyframes eq-bounce {
   0% { transform: scaleY(0.3); }
   100% { transform: scaleY(1); }
+}
+
+/* --- Like Button --- */
+.track-item__like {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  color: var(--text-muted, #7d7d7d);
+  flex-shrink: 0;
+  transition: color var(--transition), transform 0.15s ease;
+  cursor: pointer;
+}
+
+.track-item__like:hover {
+  color: var(--text-secondary);
+}
+
+.track-item__like--active {
+  color: var(--accent);
+}
+
+.track-item__like--active:hover {
+  color: var(--accent);
+  opacity: 0.8;
+}
+
+.track-item__like-icon {
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.track-item__like:active .track-item__like-icon {
+  transform: scale(1.25);
+}
+
+.track-item__like-count {
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  min-width: 1ch;
+}
+
+/* --- Play Count --- */
+.track-item__plays {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--text-muted, #7d7d7d);
+  flex-shrink: 0;
+  font-size: 0.75rem;
+}
+
+.track-item__plays-icon {
+  display: block;
+  opacity: 0.7;
+}
+
+.track-item__plays-count {
+  font-variant-numeric: tabular-nums;
+  min-width: 1ch;
 }
 
 /* Hover: show play icon for non-active tracks */
@@ -871,6 +1004,14 @@ img {
 
   .header__subtitle-toggle {
     display: flex;
+  }
+
+  .header__actions-left {
+    top: 8px;
+  }
+
+  .header__actions {
+    top: 8px;
   }
 
   .header__subtitle-wrap {

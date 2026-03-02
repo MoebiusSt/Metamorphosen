@@ -10,6 +10,12 @@ export default function AlbumView({
   onTitleChange,
   onReorderTracks,
   onExport,
+  // like props
+  isLiked,
+  getCount,
+  onToggleLike,
+  // play count props
+  getPlayCount,
 }) {
   const [showExport, setShowExport] = useState(false);
   const [exportText, setExportText] = useState('');
@@ -73,6 +79,10 @@ export default function AlbumView({
         isEditMode={isEditMode}
         onTitleChange={onTitleChange}
         onReorderTracks={onReorderTracks}
+        isLiked={isLiked}
+        getCount={getCount}
+        onToggleLike={onToggleLike}
+        getPlayCount={getPlayCount}
       />
 
       {showExport && (
