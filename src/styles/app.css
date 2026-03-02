@@ -131,15 +131,15 @@ img {
 /* Toggle button: hidden on desktop, shown on mobile */
 .header__subtitle-toggle {
   display: none;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: var(--bg-elevated);
   color: var(--text-secondary);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 600;
   line-height: 1;
   cursor: pointer;
@@ -155,33 +155,35 @@ img {
 /* Shuffle toggle */
 .header__shuffle-toggle {
   display: flex;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   background: var(--bg-elevated);
-  color: var(--text-secondary);
+  color: var(--accent-dim);
   cursor: pointer;
-  transition: color var(--transition), background var(--transition), border-color var(--transition);
+  transition: color var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
 .header__shuffle-toggle:hover {
-  color: var(--text-primary);
+  color: var(--accent);
   background: var(--bg-hover);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--accent-dim);
 }
 
 .header__shuffle-toggle--active {
   color: var(--accent);
   background: var(--accent-glow);
   border-color: var(--accent-dim);
+  box-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
 }
 
 .header__shuffle-toggle--active:hover {
   background: var(--accent-glow);
   border-color: var(--accent);
+  box-shadow: 0 0 14px var(--accent-glow), 0 0 28px var(--accent-glow);
 }
 
 .header__subtitle-wrap {

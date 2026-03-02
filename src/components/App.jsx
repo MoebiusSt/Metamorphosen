@@ -19,6 +19,7 @@ export default function App() {
     isShuffleActive,
     toggleShuffle,
     deactivateShuffle,
+    rebaseShuffleQueue,
     nextShuffled,
     prevShuffled,
   } = useShuffleMode();
@@ -135,10 +136,10 @@ export default function App() {
     }
   }
 
-  // When user clicks a track directly, deactivate shuffle
+  // When user clicks a track directly, keep shuffle active and rebase queue from that track
   function handleTrackClick(albumId, trackIndex) {
     if (isShuffleActive) {
-      deactivateShuffle();
+      rebaseShuffleQueue(albums, albumId, trackIndex);
     }
     play(albumId, trackIndex);
     recordTrackPlay(albumId, trackIndex);

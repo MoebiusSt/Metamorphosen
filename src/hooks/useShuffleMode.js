@@ -68,6 +68,14 @@ export default function useShuffleMode() {
     positionRef.current = 0;
   }, []);
 
+  // Rebuild the shuffle queue with a newly selected track at position 0,
+  // keeping shuffle mode active (used when user manually clicks a track).
+  const rebaseShuffleQueue = useCallback((albums, albumId, trackIndex) => {
+    queueRef.current = buildQueue(albums, albumId, trackIndex);
+    positionRef.current = 0;
+    setTick((t) => t + 1);
+  }, []);
+
   const nextShuffled = useCallback(() => {
     const queue = queueRef.current;
     const next = positionRef.current + 1;
@@ -95,6 +103,7 @@ export default function useShuffleMode() {
     isShuffleActive,
     toggleShuffle,
     deactivateShuffle,
+    rebaseShuffleQueue,
     nextShuffled,
     prevShuffled,
     getCurrentShuffled,
