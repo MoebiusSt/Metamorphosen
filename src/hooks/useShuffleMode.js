@@ -68,6 +68,23 @@ export default function useShuffleMode() {
     positionRef.current = 0;
   }, []);
 
+  // Move the queue pointer to a manually selected track without rebuilding the queue.
+  // - If the track is still upcoming (future in queue): advance pointer to it → history intact, queue continues from there.
+  // - If already played (past) or not found: leave pointer unchanged → track plays as a manual interrupt,
+  //   queue resumes from the next unplayed position when it ends naturally.
+  const pointQueueTo = useCallback((albumId, trackIndex) => {
+    const queue = queueRef.current;
+    const currentPos = positionRef.current;
+    const futureIdx = queue.findIndex(
+      (it, i) => i > currentPos && it.albumId === albumId && it.trackIndex === trackIndex
+    );
+    if (futureIdx !== -1) {
+      positionRef.current = futureIdx;
+    }
+    // If in the past or not found: no change – natural end will advance to currentPos+1
+    setTick((t) => t + 1);
+  }, []);
+
   const nextShuffled = useCallback(() => {
     const queue = queueRef.current;
     const next = positionRef.current + 1;
@@ -95,6 +112,7 @@ export default function useShuffleMode() {
     isShuffleActive,
     toggleShuffle,
     deactivateShuffle,
+    pointQueueTo,
     nextShuffled,
     prevShuffled,
     getCurrentShuffled,

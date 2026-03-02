@@ -19,6 +19,7 @@ export default function App() {
     isShuffleActive,
     toggleShuffle,
     deactivateShuffle,
+    pointQueueTo,
     nextShuffled,
     prevShuffled,
   } = useShuffleMode();
@@ -135,10 +136,14 @@ export default function App() {
     }
   }
 
-  // When user clicks a track directly, deactivate shuffle
+  // When user clicks a track directly, keep shuffle active.
+  // Advance the queue pointer to the clicked track if it's still upcoming
+  // (so the queue continues sensibly after it), otherwise play as an interrupt
+  // and the queue resumes from the next unplayed position.
+  // History (Prev navigation) is never destroyed.
   function handleTrackClick(albumId, trackIndex) {
     if (isShuffleActive) {
-      deactivateShuffle();
+      pointQueueTo(albumId, trackIndex);
     }
     play(albumId, trackIndex);
     recordTrackPlay(albumId, trackIndex);
