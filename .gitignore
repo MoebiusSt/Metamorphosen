@@ -23,9 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Environment variables (contain secrets – never commit)
-.env
-
-# Local agent/IDE documentation and workspace (do not commit)
+# Local agent/IDE documentation and workspace(do not commit)
 AGENTS.md
 metamorphosen.code-workspace
