@@ -232,6 +232,10 @@ img {
   text-align: left;
 }
 
+.header__subtitle a {
+    color: var(--accent-dim);
+}
+
 /* --- Genre Tabs --- */
 .genre-tabs {
   position: sticky;
