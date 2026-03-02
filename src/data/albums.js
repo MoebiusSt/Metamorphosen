@@ -75,7 +75,7 @@ const albums = [
       { number: 5, title: "Hey, Du Kleine", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_05.mp3" },
       { number: 6, title: "Geschluckt es", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_06.mp3" },
       { number: 7, title: "Der Schritt zur Tat", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_07.mp3" },
-      { number: 8, title: "Myrna Loy", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_08.mp3" },
+      { number: 8, title: "Samt im Getriebe", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_08.mp3" },
       { number: 9, title: "Charlotte und Farben", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_09.mp3" },
       { number: 4, title: "Endlich funktioniert's!", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_04.mp3" },
       { number: 10, title: "Auf dem Boden der Tatsachen", file: "music/hamburger-schule/Metamorphosen__Im_Kreissaal_der_Gedanken_10.mp3" },
