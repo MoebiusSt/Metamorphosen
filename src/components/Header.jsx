@@ -34,7 +34,7 @@ export default function Header({ isShuffleActive, onToggleShuffle }) {
       <div className="header__subtitle-wrap">
         <div className="header__subtitle-inner">
           <p className="header__subtitle">
-            I set out to write a song for my son. The idea was to ironically rewrite the song "Feliz Navidad" to "Methylphenidate,". This, together with the launch of "Sonauto v3", a free-to-use frontier AI model for music inference gave me reason to play. This turned into a five-day exploration, scratching the surface of its capabilities. How, HOW(!) do they do this?! Zero edits were done on the files. (Stephan Möbius, 2026-03-01).<br>Music: Sonauto V3 (<a href="https://sonauto.ai/">https://sonauto.ai/</a>) – frankly impressive.
+            I set out to write a song for my son. The idea was to ironically rewrite the song "Feliz Navidad" to "Methylphenidate,". This, together with the launch of "Sonauto v3", a free-to-use frontier AI model for music inference gave me reason to play. This turned into a five-day exploration, scratching the surface of its capabilities. How, HOW(!) do they do this?! Zero edits were done on the files. (Stephan Möbius, 2026-03-01).<br></br>Music: Sonauto V3 (<a href="https://sonauto.ai/">https://sonauto.ai/</a>) – frankly impressive.
           </p>
         </div>
       </div>
