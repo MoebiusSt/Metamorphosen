@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Local agent/IDE documentation (do not commit)
+# Local agent/IDE documentation and workspace(do not commit)
 AGENTS.md
+metamorphosen.code-workspace
