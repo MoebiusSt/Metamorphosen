@@ -12,6 +12,8 @@ export default function TrackList({
   isLiked,
   getCount,
   onToggleLike,
+  // play count props
+  getPlayCount,
 }) {
   const isCurrentAlbum = playerState.currentAlbumId === album.id;
 
@@ -86,6 +88,7 @@ export default function TrackList({
         likeCount={getCount(track)}
         isLiked={isLiked(track)}
         onToggleLike={onToggleLike}
+        playCount={getPlayCount(track)}
         isEditMode={isEditMode}
         isDragging={isEditMode && dragIndex === index}
         onTitleChange={(idx, title) => onTitleChange(album.id, idx, title)}

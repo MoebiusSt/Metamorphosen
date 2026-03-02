@@ -14,6 +14,8 @@ export default function AlbumView({
   isLiked,
   getCount,
   onToggleLike,
+  // play count props
+  getPlayCount,
 }) {
   const [showExport, setShowExport] = useState(false);
   const [exportText, setExportText] = useState('');
@@ -80,6 +82,7 @@ export default function AlbumView({
         isLiked={isLiked}
         getCount={getCount}
         onToggleLike={onToggleLike}
+        getPlayCount={getPlayCount}
       />
 
       {showExport && (

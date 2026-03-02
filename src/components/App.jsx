@@ -9,6 +9,7 @@ import usePlaylistData from '../hooks/usePlaylistData.js';
 import useEditMode from '../hooks/useEditMode.js';
 import useShuffleMode from '../hooks/useShuffleMode.js';
 import useLikes from '../hooks/useLikes.js';
+import usePlayCounts from '../hooks/usePlayCounts.js';
 import { getPersistedUi, setPersistedUi } from '../utils/persistUi.js';
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
   } = useShuffleMode();
 
   const { toggleLike, isLiked, getCount } = useLikes();
+  const { recordPlay, getPlayCount } = usePlayCounts();
 
   const [activeAlbumId, setActiveAlbumId] = useState(albums[0]?.id ?? null);
   const uiHydratedRef = useRef(false);
@@ -61,13 +63,23 @@ export default function App() {
         if (item) {
           play(item.albumId, item.trackIndex);
           setActiveAlbumId(item.albumId);
+          recordTrackPlay(item.albumId, item.trackIndex);
         }
         // If null → end of shuffle queue, playback stops
       } else {
+        // Record play for the next sequential track
+        const { currentAlbumId, currentTrackIndex } = playerState;
+        const album = albums.find((a) => a.id === currentAlbumId);
+        if (album) {
+          const nextIdx = currentTrackIndex + 1;
+          if (nextIdx < album.tracks.length) {
+            recordTrackPlay(currentAlbumId, nextIdx);
+          }
+        }
         next();
       }
     };
-  }, [isShuffleActive, nextShuffled, play, next]);
+  }, [isShuffleActive, nextShuffled, play, next, playerState, albums, recordPlay]);
 
   // Shuffle-aware next
   function handleNext() {
@@ -76,10 +88,19 @@ export default function App() {
       if (item) {
         play(item.albumId, item.trackIndex);
         setActiveAlbumId(item.albumId);
+        recordTrackPlay(item.albumId, item.trackIndex);
       } else {
         pause();
       }
     } else {
+      const { currentAlbumId, currentTrackIndex } = playerState;
+      const album = albums.find((a) => a.id === currentAlbumId);
+      if (album) {
+        const nextIdx = currentTrackIndex + 1;
+        if (nextIdx < album.tracks.length) {
+          recordTrackPlay(currentAlbumId, nextIdx);
+        }
+      }
       next();
     }
   }
@@ -91,9 +112,26 @@ export default function App() {
       if (item) {
         play(item.albumId, item.trackIndex);
         setActiveAlbumId(item.albumId);
+        recordTrackPlay(item.albumId, item.trackIndex);
       }
     } else {
+      const { currentAlbumId, currentTrackIndex } = playerState;
+      const album = albums.find((a) => a.id === currentAlbumId);
+      if (album) {
+        const prevIdx = currentTrackIndex - 1;
+        if (prevIdx >= 0) {
+          recordTrackPlay(currentAlbumId, prevIdx);
+        }
+      }
       prev();
+    }
+  }
+
+  // Helper: record a play count for a given album + track index
+  function recordTrackPlay(albumId, trackIndex) {
+    const album = albums.find((a) => a.id === albumId);
+    if (album && album.tracks[trackIndex]) {
+      recordPlay(album.tracks[trackIndex]);
     }
   }
 
@@ -103,6 +141,7 @@ export default function App() {
       deactivateShuffle();
     }
     play(albumId, trackIndex);
+    recordTrackPlay(albumId, trackIndex);
   }
 
   // Toggle shuffle
@@ -155,6 +194,7 @@ export default function App() {
           isLiked={isLiked}
           getCount={getCount}
           onToggleLike={toggleLike}
+          getPlayCount={getPlayCount}
         />
       </main>
       <Player
