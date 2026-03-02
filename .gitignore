@@ -23,5 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
+# Environment variables (contain secrets – never commit)
+.env
+
 # Local agent/IDE documentation (do not commit)
 AGENTS.md
