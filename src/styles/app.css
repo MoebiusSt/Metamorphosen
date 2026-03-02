@@ -106,7 +106,18 @@ img {
   background-clip: text;
 }
 
-/* Header actions: "?" + shuffle toggle stacked vertically at top-right */
+/* Header actions: left side (shuffle) */
+.header__actions-left {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 2;
+}
+
+/* Header actions: right side ("?" toggle) */
 .header__actions {
   position: absolute;
   top: 12px;
@@ -437,6 +448,26 @@ img {
 
 .track-item__like-count {
   font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  min-width: 1ch;
+}
+
+/* --- Play Count --- */
+.track-item__plays {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--text-muted, #7d7d7d);
+  flex-shrink: 0;
+  font-size: 0.75rem;
+}
+
+.track-item__plays-icon {
+  display: block;
+  opacity: 0.7;
+}
+
+.track-item__plays-count {
   font-variant-numeric: tabular-nums;
   min-width: 1ch;
 }
@@ -952,6 +983,10 @@ img {
 
   .header__subtitle-toggle {
     display: flex;
+  }
+
+  .header__actions-left {
+    top: 8px;
   }
 
   .header__actions {
