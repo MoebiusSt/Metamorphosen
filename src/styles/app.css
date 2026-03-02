@@ -175,15 +175,17 @@ img {
 
 .header__shuffle-toggle--active {
   color: var(--accent);
-  background: rgba(45, 212, 168, 0.15);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
   border-color: var(--accent);
-  box-shadow: 0 0 8px rgba(45, 212, 168, 0.45), 0 0 18px rgba(45, 212, 168, 0.2);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 45%, transparent),
+              0 0 18px color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
 .header__shuffle-toggle--active:hover {
-  background: rgba(45, 212, 168, 0.2);
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
   border-color: var(--accent);
-  box-shadow: 0 0 12px rgba(45, 212, 168, 0.55), 0 0 24px rgba(45, 212, 168, 0.25);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 55%, transparent),
+              0 0 24px color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
 .header__subtitle-wrap {
