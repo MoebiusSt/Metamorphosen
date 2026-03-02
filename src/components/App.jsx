@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
 import Header from './Header.jsx';
 import GenreTabs from './GenreTabs.jsx';
 import AlbumView from './AlbumView.jsx';
@@ -170,7 +170,7 @@ export default function App() {
 
   const activeAlbum = albums.find((a) => a.id === activeAlbumId);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (activeAlbum?.accent) {
       const root = document.documentElement;
       root.style.setProperty('--accent', activeAlbum.accent.main);

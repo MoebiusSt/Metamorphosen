@@ -3,6 +3,23 @@
    Dark Theme, Spotify-inspired
    ======================================== */
 
+/* --- Registered CSS Custom Properties (enables color transitions) --- */
+@property --accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #2dd4a8;
+}
+@property --accent-dim {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #0d9373;
+}
+@property --accent-glow {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(45, 212, 168, 0.15);
+}
+
 /* --- CSS Custom Properties --- */
 :root {
   --bg-base: #0a0a0a;
