@@ -1,44 +1,50 @@
 # Metamorphosen
 
-Ein React-basierter MP3-Album-Player, gehostet auf GitHub Pages. Fünf Genre-Alben werden über horizontale Tabs gewechselt. Ein persistenter Bottom-Player spielt Audio albumübergreifend weiter.
+A React-based MP3 album player that you can host on GitHub Pages. Switch up some albums via horizontal tabs. A persistent bottom player keeps audio playing seamlessly across albums. People can like you song and play counts get tracked if you connect a firebase firestore (free tear).
 
-## Genres
+## Features
 
+- Clean, responsive layout
+- Zero backend — fully static, deployable to GitHub Pages
+
+## Genre or Album Slots (in my case... replace with your data)
 - **Hiphop**
 - **Indietronic**
 - **Post-Punk**
 - **Hamburger Schule**
 - **Chanson**
 
-## Eigene Musik einpflegen
+Labels and track data are fully configurable in `src/data/albums.js`.
 
-1. Lege deine MP3-Dateien in `public/music/{genre-id}/` ab (z.B. `public/music/hiphop/`)
-2. Benenne sie als `01-trackname.mp3`, `02-trackname.mp3`, ...
-3. Lege ein quadratisches Cover-Bild als `cover.jpg` in denselben Ordner
-4. Bearbeite `src/data/albums.js` und trage die Dateinamen und Track-Infos ein
+## Adding Your Music
 
-## Entwicklung
+1. Place your MP3 files in `public/music/{album-id}/` (e.g. `public/music/hiphop/`)
+2. Name them sequentially: `01-trackname.mp3`, `02-trackname.mp3`, ...
+3. Add a square cover image as `cover.jpg` in the same folder
+4. Edit `src/data/albums.js` and fill in the filenames and track metadata
+
+## Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Deployment auf GitHub Pages
+## Deployment to GitHub Pages
 
-### Option 1: Manuell via gh-pages
+### Option 1: Manual via gh-pages
 
 ```bash
 npm run deploy
 ```
 
-### Option 2: Automatisch via GitHub Actions
+### Option 2: Automatic via GitHub Actions
 
-Push auf `main` triggert automatisch den Build und das Deployment. Voraussetzung: GitHub Pages muss in den Repository-Settings auf "GitHub Actions" als Source konfiguriert sein.
+Pushing to `main` automatically triggers a build and deployment. Prerequisite: GitHub Pages must be configured to use **GitHub Actions** as the source in your repository settings.
 
-## Tech-Stack
+## Tech Stack
 
-- React 19 mit Hooks
-- Vite als Bundler
-- Globales CSS mit Custom Properties
-- gh-pages / GitHub Actions für Deployment
+- React 19 with Hooks
+- Vite
+- Global CSS with Custom Properties
+- gh-pages / GitHub Actions for deployment
