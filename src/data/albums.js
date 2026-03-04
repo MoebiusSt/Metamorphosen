@@ -117,8 +117,11 @@ const albums = [
     accent: { main: "#38bdf8", dim: "#0284c7", glow: "rgba(56, 189, 248, 0.15)" },
     cover: "music/diverse/cover.jpg",
     tracks: [
-      { number: 1, title: "Jazzed up", file: "music/diverse/Metamorphosen__Un-Ano-Estimulante_01.mp3" },
-      { number: 2, title: "Feliz Phenidat", file: "music/diverse/Metamorphosen__Un-Ano-Estimulante_02.mp3" }
+      { number: 2, title: "Feliz Phenidat", file: "music/diverse/Metamorphosen__Un-Ano-Estimulante_02.mp3" },
+      { number: 3, title: "Lost in the sunlight", file: "music/diverse/Metamorphosen__Un-Ano-Estimulante_03.mp3" },
+      { number: 4, title: "El año claro", file: "music/diverse/Metamorphosen__Un-Ano-Estimulante_04.mp3" },
+      { number: 5, title: "Entre Estaciones", file: "music/diverse/Metamorphosen__Un-Ano-Estimulante_05.mp3" },
+      { number: 1, title: "Jazzed up", file: "music/diverse/Metamorphosen__Un-Ano-Estimulante_01.mp3" }
     ]
   }
 ];
