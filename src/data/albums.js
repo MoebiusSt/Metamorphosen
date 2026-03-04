@@ -83,6 +83,20 @@ const albums = [
     ]
   },
   {
+    id: "prog-rock",
+    title: "The Grand Illusion",
+    genre: "Prog Rock",
+    accent: { main: "#9655ba", dim: "502968", glow: "rgba(251, 191, 36, 0.15)" },
+    cover: "music/prog-rock/cover.jpg",
+    tracks: [
+      { number: 2, title: "Track 1", file: "music/prog-rock/Metamorphosen__transfusion_02.mp3" },
+      { number: 6, title: "Track 2", file: "music/prog-rock/Metamorphosen__transfusion_06.mp3" },
+      { number: 1, title: "Track 3", file: "music/prog-rock/Metamorphosen__transfusion_01.mp3" },
+      { number: 5, title: "Track 4", file: "music/prog-rock/Metamorphosen__transfusion_05.mp3" },
+      { number: 3, title: "Track 6", file: "music/prog-rock/Metamorphosen__transfusion_03.mp3" }
+    ]
+  },
+  {
     id: "chanson",
     title: "The grand focus",
     genre: "Chanson",
