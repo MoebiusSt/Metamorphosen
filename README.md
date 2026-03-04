@@ -4,6 +4,9 @@ A React-based MP3 album player that you can host on GitHub Pages. Switch up some
 
 <img src="Metamorphosen_screenshot_moebiusst.github.io_2026-03-04.jpg" width="450" alt="Metamorphosen Screenshot">
 
+Example built with GitHub Pages:
+[https://moebiusst.github.io/Metamorphosen/](https://moebiusst.github.io/Metamorphosen/) 
+
 ## Features
 
 - Clean, responsive layout
