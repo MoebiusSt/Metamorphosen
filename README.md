@@ -2,6 +2,8 @@
 
 A React-based MP3 album player that you can host on GitHub Pages. Switch up some albums via horizontal tabs. A persistent bottom player keeps audio playing seamlessly across albums. People can like you song and play counts get tracked if you connect a firebase firestore (free tear).
 
+![Metamorphosen Screenshot](Metamorphosen_screenshot_moebiusst.github.io_2026-03-04.jpg)
+
 ## Features
 
 - Clean, responsive layout
